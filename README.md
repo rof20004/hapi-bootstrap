@@ -1,3 +1,3 @@
 
-# Hapi-Polymer
-Stack Hapi + Polymer
+# Hapi-Bootstrap
+Stack Hapi + Bootstrap
