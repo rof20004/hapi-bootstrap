@@ -22,3 +22,15 @@ exports.index = {
     reply.view('index');
   }
 };
+
+exports.listContatos = {
+  handler: function(request, reply) {
+    reply.view('contato/list');
+  }
+};
+
+exports.addContato = {
+  handler: function(request, reply) {
+    reply.view('contato/add');
+  }
+};
