@@ -1,0 +1,8 @@
+{
+  "name": "teste",
+  "main": "index.html",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {}
+}
