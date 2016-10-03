@@ -9,7 +9,7 @@ exports.login = {
   handler: function(request, reply) {
     const user = request.payload;
     if (user.login.trim() != '' && user.senha.trim() != '' &&
-        user.login === 'rof20004' && user.senha === 'boanerge') {
+        user.login === 'rof20004' && user.senha === '123') {
       request.cookieAuth.set(user);
       return reply.redirect('/');
     }
