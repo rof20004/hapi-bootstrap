@@ -77,6 +77,9 @@ server.register([
     if (response.isBoom && request.path === '/login') {
       message = response.output.payload.message;
       return reply.view('login', {messageError: message}, {layout: false});
+    } else if (response.isBoom && request.path === '/register') {
+      message = response.output.payload.message;
+      return reply.view('register', {messageError: message}, {layout: false});
     } else if (response.isBoom) {
         message = response.output.payload.message;
         var view = request.path.replace('/', '');

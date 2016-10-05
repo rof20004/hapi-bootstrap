@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Gerenciador de Lista</title>
+  <meta charset="utf-8" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/public/css/style.css" rel="stylesheet">
+</head>
+
+<body id="registerBody">
+
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="text-align: center">
+        <strong>Sistema de Gestão Pessoal Hinode - Cadastro de Usuário</strong>
+      </div>
+      <div class="panel-body">
+        <div id="messageError">
+
+        </div>
+        <div id="messageSuccess">
+
+        </div>
+        <form class="form-horizontal" role="form" method="post" action="/register">
+          <div class="form-group">
+            <div class="col-sm-6">
+              <label for="nome" class="control-label">Nome</label>
+              <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe o nome completo..." required value="{{nome}}">
+            </div>
+            <div class="col-sm-6">
+              <label for="email" class="control-label">E-mail</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder="Informe o e-mail..." required value="{{email}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <label for="endereco" class="control-label">Endereço</label>
+              <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Informe o endereço..." required value="{{endereco}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-4">
+              <label for="telefone" class="control-label">Telefone</label>
+              <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Informe o telefone..." required value="{{telefone}}">
+            </div>
+            <div class="col-sm-4">
+              <label for="password" class="control-label">Senha</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Informe o senha..." required>
+            </div>
+            <div class="col-sm-4">
+              <label for="password2" class="control-label">Repita a senha</label>
+              <input type="password" class="form-control" id="password2" name="password2" placeholder="Repita a senha informada..." required>
+            </div>
+          </div>
+          <div class="form-group last">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-success btn-sm">Cadastrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="panel-footer"><a href="/login">Voltar</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var error = '{{messageError}}' || null;
+      if (error) {
+        $('#messageError').html('<div class="alert alert-danger alert-dismissible" role="alert">' +
+                                  '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                                  '<strong>' + error + '</strong>' +
+                                '</div>');
+      }
+
+      var success = '{{messageSuccess}}' || null;
+      if (success) {
+        $('#messageSuccess').html('<div class="alert alert-success alert-dismissible" role="alert">' +
+                                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                                    '<strong>' + success + '</strong>' +
+                                  '</div>');
+      }
+    });
+  </script>
+</body>
+
+</html>

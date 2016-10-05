@@ -7,16 +7,6 @@
     "test": "test"
   },
   "devDependencies": {
-    "bcrypt": "^0.8.7",
-    "boom": "^3.0.0",
-    "bower": "^1.7.9",
-    "handlebars": "^4.0.5",
-    "hapi": "^15.0.3",
-    "hapi-auth-cookie": "^6.1.1",
-    "inert": "^4.0.0",
-    "joi": "^7.0.1",
-    "mongoose": "^4.4.19",
-    "vision": "^4.1.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -26,6 +16,14 @@
   "license": "ISC",
   "dependencies": {
     "hapi": "^15.0.3",
-    "hapi-auth-cookie": "^6.1.1"
+    "hapi-auth-cookie": "^6.1.1",
+    "joi": "^9.1.0",
+    "bcrypt": "^0.8.7",
+    "boom": "^3.0.0",
+    "bower": "^1.7.9",
+    "handlebars": "^4.0.5",
+    "inert": "^4.0.0",
+    "mongoose": "^4.4.19",
+    "vision": "^4.1.0"
   }
 }

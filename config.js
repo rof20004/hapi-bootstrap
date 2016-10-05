@@ -3,7 +3,7 @@ module.exports = {
 		username: '',
 		password: '',
 		url: 'localhost:27017',
-		database: 'lista'
+		database: 'hapi-bootstrap'
 	},
 	server: {
 		host: 'localhost',

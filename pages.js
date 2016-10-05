@@ -17,6 +17,23 @@ exports.login = {
   }
 };
 
+exports.register = {
+  auth: {
+    mode: 'try'
+  },
+  handler: function(request, reply) {
+    if (request.auth.isAuthenticated) {
+      return reply.redirect('/');
+    }
+    reply.view('register', null, {layout: false});
+  },
+  plugins: {
+    'hapi-auth-cookie': {
+      redirectTo: false
+    }
+  }
+};
+
 exports.index = {
   handler: function(request, reply) {
     reply.view('index');

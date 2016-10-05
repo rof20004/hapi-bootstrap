@@ -2,7 +2,7 @@
 
 const Boom = require('boom');
 const Joi = require('joi');
-const User = require('../models/user');
+const User = require('../models/usuario');
 const Bcrypt = require('bcrypt');
 
 exports.login = {
@@ -20,7 +20,7 @@ exports.login = {
         } else {
           return reply(Boom.unauthorized('Usuário ou senha inválidos', err));
         }
-      } else if (user.length == 0) {
+      } else if (user.length === 0) {
         return reply(Boom.unauthorized('Usuário não encontrado', err));
       }
 
