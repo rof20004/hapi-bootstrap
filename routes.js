@@ -2,6 +2,7 @@
 
 const Pages = require('./pages');
 const Security = require('./controllers/security');
+const Produto = require('./controllers/produto');
 
 exports.endpoints = [
 	{method: 'GET',    	path: '/login',											config: Pages.login},
@@ -11,5 +12,8 @@ exports.endpoints = [
 	{method: 'POST',    path: '/register',									config: Security.register},
 	{method: 'GET',    	path: '/',											    config: Pages.index},
 	{method: 'GET',    	path: '/contato/list',							config: Pages.listContatos},
-	{method: 'GET',    	path: '/contato/add',							  config: Pages.addContato}
+	{method: 'GET',    	path: '/contato/add',							  config: Pages.addContato},
+	{method: 'GET',    	path: '/produto/list',							config: Pages.listProdutos},
+	{method: 'GET',    	path: '/produto/add',							  config: Pages.addProduto},
+	{method: 'POST',    path: '/produto/add',								config: Produto.add}
 ];

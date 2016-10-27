@@ -51,3 +51,15 @@ exports.addContato = {
     reply.view('contato/add');
   }
 };
+
+exports.listProdutos = {
+  handler: function(request, reply) {
+    reply.view('produto/list');
+  }
+};
+
+exports.addProduto = {
+  handler: function(request, reply) {
+    reply.view('produto/add');
+  }
+};

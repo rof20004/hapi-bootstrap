@@ -54,13 +54,15 @@ exports.register = {
     mode: 'try'
   },
   handler: function(request, reply) {
+    var responseObj = {};
+    responseObj.nome = request.payload.nome,
+    responseObj.email = request.payload.email,
+    responseObj.endereco = request.payload.endereco,
+    responseObj.telefone = request.payload.endereco
+
     if (request.payload.password !== request.payload.password2) {
-      return reply.view('register', {messageError: 'Senha não confere, as senhas precisam ser iguais',
-                                     nome: request.payload.nome,
-                                     email: request.payload.email,
-                                     endereco: request.payload.endereco,
-                                     telefone: request.payload.endereco
-                                    }, {layout: false});
+      responseObj.messageError = 'Senha não confere, as senhas precisam ser iguais';
+      return reply.view('register', responseObj, {layout: false});
     }
 
     request.payload.password = Bcrypt.hashSync(request.payload.password, 10);
@@ -70,19 +72,11 @@ exports.register = {
     usuario.save((err, usuario) => {
       if (err) {
         if (err.code === 11000) {
-          return reply.view('register', {messageError: 'Já existe usuário cadastrado com o e-mail informado',
-                                         nome: request.payload.nome,
-                                         email: request.payload.email,
-                                         endereco: request.payload.endereco,
-                                         telefone: request.payload.telefone
-                                        }, {layout: false});
+          responseObj.messageError = 'Já existe usuário cadastrado com o e-mail informado';
+          return reply.view('register', responseObj, {layout: false});
         } else {
-          return reply.view('register', {messageError: 'Ocorreu um erro ao cadastrar o usuário, tente novamente mais tarde',
-                                         nome: request.payload.nome,
-                                         email: request.payload.email,
-                                         endereco: request.payload.endereco,
-                                         telefone: request.payload.telefone
-                                        }, {layout: false});
+          responseObj.messageError = 'Ocorreu um erro ao cadastrar o usuário, tente novamente mais tarde';
+          return reply.view('register', responseObj, {layout: false});
         }
       }
       return reply.view('register', {messageSuccess: 'Usuário cadastrado com sucesso!'}, {layout: false});
@@ -90,7 +84,12 @@ exports.register = {
   },
   validate: {
     payload: {
-      email: Joi.string().email().required()
+      nome: Joi.string().required(),
+      email: Joi.string().email().required(),
+      endereco: Joi.string().optional(),
+      telefone: Joi.string().optional(),
+      password: Joi.string().required(),
+      password2: Joi.string().required()
     }
   },
   plugins: {

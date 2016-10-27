@@ -3,6 +3,7 @@
 const Hapi = require('hapi');
 const Config = require('./config');
 const Routes = require('./routes');
+const Path = require('path');
 
 const server = new Hapi.Server();
 server.connection({
@@ -26,8 +27,9 @@ server.register([
   server.auth.strategy('session', 'cookie', true, {
     password: 'SessionAuth_Pé_Sword_Hapi_Server_Stats', //Use something more secure in production
     redirectTo: '/login', //If there is no session, redirect here
-    ttl: 1 * 60 * 60 * 1000, // Set session to 1 day
-    isSecure: false //Should be set to true (which is the default) in production
+    isSecure: false, //Should be set to true (which is the default) in production
+    isHttpOnly: true,
+    clearInvalid: true
   });
 
   server.route({
@@ -89,6 +91,14 @@ server.register([
         return reply.view(view, {messageError: message});
     }
     reply.continue();
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/favicon.ico',
+    handler: function(request, reply) {
+      reply.file(Path.join(__dirname, 'favicon.ico'));
+    }
   });
 
   // Start the server
